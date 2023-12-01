@@ -1,0 +1,42 @@
+version: '3'
+services:
+  upload_video_app:
+    build: ./upload_video_app
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mysql_db
+    volumes:
+      - uploads:/app/uploads  # Mount the uploads volume
+  video_streaming_app:
+    build: ./video_streaming_app
+    ports:
+      - "3002:3000"
+    volumes:
+      - uploads:/app/stored_files  # Mount the uploads volume
+  auth_service:
+    build: ./auth_service
+    ports:
+      - "3000:3000"
+  file_system_service:
+    build: ./file_system_service
+    ports:
+      - "3004:3000"
+    volumes:
+      - uploads:/app/stored_files  # Mount the uploads volume
+  mysql_db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: videoDB
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3307:3306"
+
+volumes:
+  mysql-data:
+  uploads:  # Named volume for uploads

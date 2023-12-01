@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Video</title>
+    <style>
+      body {
+          font-family: Arial, sans-serif;
+          margin: 20px;
+          padding: 20px;
+          background-color: #f4f4f4;
+      }
+
+      h1 {
+            color: #272727;
+            text-align: center; 
+        }
+
+      form {
+          max-width: 300px;
+          margin: 0 auto;
+          background-color: #fff;
+          padding: 20px;
+          border-radius: 5px;
+          box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      label,
+      input {
+          display: block;
+          margin-bottom: 10px;
+      }
+  </style>
+</head>
+<body>
+
+<h1>Upload a Video</h1>
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="videoName">Video Name:</label>
+  <input type="text" id="videoName" name="videoName"><br><br>
+
+  <input type="file" name="videoFile"><br><br>
+
+  <input type="submit" value="Upload">
+</form>
+
+</body>
+</html>
