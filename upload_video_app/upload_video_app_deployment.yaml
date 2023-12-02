@@ -1,0 +1,39 @@
+# upload-video-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: upload-video-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: upload-video
+  template:
+    metadata:
+      labels:
+        app: upload-video
+    spec:
+      containers:
+      - name: upload-video
+        image: your-registry/your-upload-video-image:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MYSQL_HOST
+          value: mysql-db-service
+        - name: FILE_STORAGE_URL
+          value: file-system-service
+        # Add other environment variables as needed
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: upload-video-service
+spec:
+  selector:
+    app: upload-video
+  ports:
+    - protocol: TCP
+      port: 80
+      target

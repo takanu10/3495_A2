@@ -1,0 +1,35 @@
+# file-system-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: file-system-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: file-system
+  template:
+    metadata:
+      labels:
+        app: file-system
+    spec:
+      containers:
+        - name: file-system
+          # change to file_system image
+          image: your-registry/your-file-system-image:latest
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: file-system-service
+spec:
+  selector:
+    app: file-system
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP

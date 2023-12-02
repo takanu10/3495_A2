@@ -1,0 +1,40 @@
+# video-streaming-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: video-streaming-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: video-streaming
+  template:
+    metadata:
+      labels:
+        app: video-streaming
+    spec:
+      containers:
+        - name: video-streaming
+          image: your-registry/your-video-streaming-image:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              value: mysql-db-service
+            - name: FILE_STORAGE_URL
+              value: file-system-service
+          # Add other environment variables as needed
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: video-streaming-service
+spec:
+  selector:
+    app: video-streaming
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
