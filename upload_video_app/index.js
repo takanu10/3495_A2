@@ -7,7 +7,7 @@ const port = 3000;
 
 // MySQL setup
 const db = mysql.createConnection({
-  host: "mysql_db", // this should be the service name in docker-compose for MySQL
+  host: "mysql-db-service", // this should be the service name in docker-compose for MySQL
   user: "root",
   password: "rootpass",
   database: "videoDB",
