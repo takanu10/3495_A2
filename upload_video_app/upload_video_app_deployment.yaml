@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: upload-video
-          image: pippenpat/project2:upload_video_tag
+          image: pippenpat/upload_video:latest
           ports:
             - containerPort: 3000
           env:

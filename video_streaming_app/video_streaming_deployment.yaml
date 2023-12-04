@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: video-streaming
-          image: pippenpat/project2:video_streaming_tag
+          image: pippenpat/video_stream:latest
           ports:
             - containerPort: 3000
           env:
