@@ -17,7 +17,7 @@ spec:
       containers:
         - name: auth-service
           # change image to allocated auth service image
-          image: pippenpat/project2:auth_service_tag
+          image: pippenpat/auth_service:latest
           ports:
             - containerPort: 3000
 ---
