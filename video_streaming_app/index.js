@@ -145,5 +145,5 @@ app.get("/download/:filename", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`File System Service listening at http://localhost:${port}`);
+  console.log(`File System Service listening at ${port}`);
 });

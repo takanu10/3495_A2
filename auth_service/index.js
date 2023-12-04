@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 app.post('/authenticate', (req, res) => {
     const { name, password } = req.body;
     if (name === 'John' && password === '123') {
-        res.status(200).redirect('http://localhost:3002')
+        res.status(200).redirect('http://20.175.151.1')
     } else {
         res.status(401).send('Wrong username or password');
     }
@@ -22,5 +22,5 @@ app.post('/authenticate', (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Authentication Service listening at http://localhost:${port}`);
+    console.log(`Authentication Service listening at http://20.175.151.1:${port}`);
 });

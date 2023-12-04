@@ -18,7 +18,7 @@ spec:
         - name: video-streaming
           image: pippenpat/project2:video_streaming_tag
           ports:
-            - containerPort: 8080
+            - containerPort: 3000
           env:
             - name: MYSQL_HOST
               value: mysql-db-service
@@ -36,5 +36,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      targetPort: 8080
+      targetPort: 3000
   type: LoadBalancer
