@@ -17,7 +17,7 @@ spec:
       containers:
         - name: file-system
           # change to file_system image
-          image: your-registry/your-file-system-image:latest
+          image: pippenpat/project2:file_system_tag
           ports:
             - containerPort: 8080
 ---

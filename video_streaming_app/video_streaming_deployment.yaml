@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: video-streaming
-          image: your-registry/your-video-streaming-image:latest
+          image: pippenpat/project2:video_streaming_tag
           ports:
             - containerPort: 8080
           env:

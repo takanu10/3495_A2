@@ -17,7 +17,7 @@ spec:
       containers:
         - name: mysql-db
           # change to mysql container image
-          image: your-registry/your-mysql-db-image:latest
+          image: mysql:5.7
           ports:
             - containerPort: 3306 # Adjust the port as needed
           # separate secrets file that holds the pw

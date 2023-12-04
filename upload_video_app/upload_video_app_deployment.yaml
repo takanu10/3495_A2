@@ -15,16 +15,16 @@ spec:
         app: upload-video
     spec:
       containers:
-      - name: upload-video
-        image: your-registry/your-upload-video-image:latest
-        ports:
-        - containerPort: 8080
-        env:
-        - name: MYSQL_HOST
-          value: mysql-db-service
-        - name: FILE_STORAGE_URL
-          value: file-system-service
-        # Add other environment variables as needed
+        - name: upload-video
+          image: pippenpat/project2:upload_video_tag
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MYSQL_HOST
+              value: mysql-db-service
+            - name: FILE_STORAGE_URL
+              value: file-system-service
+          # Add other environment variables as needed
 ---
 apiVersion: v1
 kind: Service
@@ -36,4 +36,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80
-      target
+      targetPort: 8080
+  type: ClusterIP
