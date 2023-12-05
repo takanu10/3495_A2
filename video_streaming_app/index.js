@@ -5,7 +5,7 @@ const app = express();
 const port = 3000;
 
 // Directory where files are stored; this should match the volume path in docker-compose
-const storageDirectory = "../file_system_service/app/stored_files";
+const storageDirectory = "/app/stored_files";
 
 app.get("/", (req, res) => {
   fs.readdir(storageDirectory, function (err, files) {
