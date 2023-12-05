@@ -75,7 +75,7 @@ app.get("/", (req, res) => {
             </style>
             <script>
                 function redirectToUpload() {
-                    window.location.href = "http://localhost:3001"; 
+                    window.location.href = "http://20.104.33.211"; 
                 }
             </script>
         </head>
