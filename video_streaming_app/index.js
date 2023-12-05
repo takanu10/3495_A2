@@ -10,6 +10,7 @@ const storageDirectory = "../file_system_service/app/stored_files";
 app.get("/", (req, res) => {
   fs.readdir(storageDirectory, function (err, files) {
     if (err) {
+      console.error("Error scanning directory:", err);
       return res.status(500).send("Unable to scan directory");
     }
 
