@@ -9,6 +9,8 @@ spec:
   selector:
     matchLabels:
       app: video-streaming
+  strategy:
+    type: Recreate
   template:
     metadata:
       labels:
@@ -25,6 +27,14 @@ spec:
             - name: FILE_STORAGE_URL
               value: file-system-service
           # Add other environment variables as needed
+          volumeMounts:
+            - mountPath: /app/stored_files
+              name: uploads
+      restartPolicy: Always
+      volumes:
+        - name: uploads
+          persistentVolumeClaim:
+            claimName: uploads
 ---
 apiVersion: v1
 kind: Service
