@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    kompose.cmd: C:\Users\Darren\Downloads\kompose.exe convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: video-streaming-app
+  name: video_streaming_app
+spec:
+  ports:
+    - name: "3002"
+      port: 3002
+      targetPort: 3000
+  selector:
+    io.kompose.service: video-streaming-app
+status:
+  loadBalancer: {}
